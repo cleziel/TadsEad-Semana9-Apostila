@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila Semana 9: Dando Vida à Página com JavaScript</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+</head>
+<body>
+
+    <header class="hero-header">
+        <div class="hero-content">
+            <img src="image/ifes-vertical-branco.png" alt="Logo IFES" class="hero-logo">
+            <h1>Dando Vida à Página com JavaScript</h1>
+            <p class="subtitle">Apostila da Semana 9 | Desenvolvimento Front-End I</p>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <h3>Sumário</h3>
+                <ul>
+                    <li><a href="#apresentacao" class="nav-link active"><i class="fas fa-lightbulb"></i> Apresentação</a></li>
+                    <li><a href="#objetivos" class="nav-link"><i class="fas fa-bullseye"></i> Objetivos</a></li>
+                    <li><a href="#introducao" class="nav-link"><i class="fas fa-code"></i> Introdução ao JS</a></li>
+                    <li><a href="#fundamentos" class="nav-link"><i class="fas fa-wrench"></i> Fundamentos</a></li>
+                    <li><a href="#dom" class="nav-link"><i class="fas fa-sitemap"></i> O DOM</a></li>
+                    <li><a href="#eventos" class="nav-link"><i class="fas fa-mouse-pointer"></i> Eventos</a></li>
+                    <li><a href="#formularios" class="nav-link"><i class="fas fa-file-alt"></i> Formulários</a></li>
+                    <li><a href="#boas-praticas" class="nav-link"><i class="fas fa-star"></i> Boas Práticas</a></li>
+                    <li><a href="#exercicios" class="nav-link"><i class="fas fa-tasks"></i> Exercícios</a></li>
+                    <li><a href="#recursos" class="nav-link"><i class="fas fa-book-open"></i> Recursos</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <section id="apresentacao" class="content-section">
+                <h2>Apresentação da Semana</h2>
+                <p>Bem-vindo à semana que transformará suas páginas estáticas em experiências dinâmicas. Até agora, você se tornou um arquiteto de estruturas com <strong>HTML</strong> e um designer de interfaces com <strong>CSS</strong>. Agora, vamos instalar o "sistema nervoso" de nossas páginas com o <strong>JavaScript (JS)</strong>.</p>
+                <p>Nosso foco será dar vida aos formulários, implementando <strong>validações em tempo real</strong>, exibindo mensagens de feedback inteligentes e controlando o fluxo de dados. Ao final desta jornada, você entenderá a filosofia do JS: ouvir o usuário e responder a ele de forma elegante e eficiente.</p>
+            </section>
+
+            <section id="objetivos" class="content-section">
+                <h2>Objetivos de Aprendizagem</h2>
+                <ul>
+                    <li><strong>Dominar</strong> o papel do JavaScript na tríade do Front-End.</li>
+                    <li><strong>Estruturar</strong> o código de forma limpa e organizada.</li>
+                    <li><strong>Manipular</strong> dados com variáveis, tipos e operadores.</li>
+                    <li><strong>Selecionar e modificar</strong> elementos da página via DOM.</li>
+                    <li><strong>Capturar e reagir</strong> a ações do usuário com eventos.</li>
+                    <li><strong>Construir validações</strong> de formulários robustas (UX).</li>
+                </ul>
+            </section>
+
+            <section id="introducao" class="content-section">
+                <h2>Introdução ao JavaScript: O Cérebro da Operação</h2>
+                <h3>O que é o JavaScript?</h3>
+                <p>O <strong>JavaScript (JS)</strong> é a linguagem de programação que permite implementar itens complexos em páginas web, controlando o <strong>comportamento</strong> e a <strong>interatividade</strong>.</p>
+                <div class="highlight-box info">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <strong>A Tríade do Front-End:</strong>
+                        <ul>
+                            <li><strong>HTML:</strong> A estrutura (esqueleto).</li>
+                            <li><strong>CSS:</strong> A apresentação (roupas).</li>
+                            <li><strong>JavaScript:</strong> O comportamento (cérebro).</li>
+                        </ul>
+                    </div>
+                </div>
+                <h3>Como Inserir JavaScript</h3>
+                <p>A abordagem profissional é usar um arquivo externo, linkado no final do <code>&lt;body&gt;</code> para garantir que o HTML seja carregado primeiro.</p>
+                <pre><code class="language-html">&lt;!-- No final do seu arquivo .html --&gt;
+&lt;script src="js/script.js"&gt;&lt;/script&gt;</code></pre>
+            </section>
+            
+            <section id="fundamentos" class="content-section">
+                <h2>Fundamentos da Linguagem</h2>
+                <h3>Variáveis com <code>let</code> e <code>const</code></h3>
+                <p>Use <code>const</code> por padrão para valores que não mudam e <code>let</code> para valores que podem ser reatribuídos. Evite <code>var</code>.</p>
+                 <pre><code class="language-javascript">const PI = 3.14159; // Não pode ser alterado
+let contador = 0;      // Pode ser alterado
+contador++;</code></pre>
+                <h3>Template Literals (`)</h3>
+                <p>Para construir strings com variáveis, use crases (<code>` `</code>). É a forma moderna, limpa e legível.</p>
+                <pre><code class="language-javascript">const usuario = "Cleziel";
+// O jeito moderno:
+console.log(`Olá, ${usuario}! Bem-vindo ao curso.`);</code></pre>
+            </section>
+            
+            <section id="dom" class="content-section">
+                <h2>O DOM: O Mapa da Página</h2>
+                <p>O <strong>Document Object Model (DOM)</strong> é como o JavaScript "enxerga" o HTML. Ele transforma a página em uma árvore de objetos que podem ser manipulados.</p>
+                <h3>Selecionando e Alterando Elementos</h3>
+                <p>Usamos métodos como <code>document.getElementById()</code> ou <code>document.querySelector()</code> para "capturar" um elemento e depois modificar suas propriedades.</p>
+                <pre><code class="language-javascript">// Captura o elemento com id="titulo"
+const meuTitulo = document.querySelector('#titulo');
+
+// Altera seu texto e cor
+meuTitulo.innerText = "Título Alterado por JS!";
+meuTitulo.style.color = '#1a5e3a'; // Verde IFES</code></pre>
+            </section>
+
+            <section id="eventos" class="content-section">
+                <h2>Eventos: Reagindo às Ações</h2>
+                <p>Eventos são ações do usuário (clique, envio de formulário, etc.). Usamos <code>addEventListener</code> para "ouvir" esses eventos e executar uma função em resposta.</p>
+                <pre><code class="language-javascript">const meuBotao = document.querySelector('#meu-botao');
+
+meuBotao.addEventListener('click', function() {
+  alert('Você clicou no botão!');
+});</code></pre>
+            </section>
+            
+            <section id="formularios" class="content-section">
+                <h2>Manipulação Profissional de Formulários</h2>
+                <p>Este é o exemplo prático e interativo da apostila. Teste a validação preenchendo (ou não) os campos e clicando em "Enviar".</p>
+                <div class="form-container">
+                    <h3>Formulário de Demonstração</h3>
+                    <form id="form-contato" novalidate>
+                        <div class="form-group">
+                            <label for="nome">Nome Completo:</label>
+                            <input type="text" id="nome" placeholder="Seu nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail:</label>
+                            <input type="email" id="email" placeholder="seu.email@exemplo.com" required>
+                        </div>
+                        <button type="submit">Enviar Cadastro</button>
+                    </form>
+                    <p id="mensagem-feedback" class="mensagem"></p>
+                </div>
+                <div class="highlight-box warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p><strong>Segurança:</strong> A validação no front-end (JS) melhora a experiência do usuário, mas a validação de segurança real e obrigatória deve sempre ser feita no <strong>back-end</strong>.</p>
+                </div>
+            </section>
+            
+            <section id="boas-praticas" class="content-section">
+                <h2>Boas Práticas e Padrões de Mercado</h2>
+                 <div class="highlight-box success">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <strong>Dicas para um Código Profissional:</strong>
+                        <ul>
+                            <li><strong>Organização:</strong> Separe HTML, CSS e JS em arquivos diferentes.</li>
+                            <li><strong>Nomenclatura:</strong> Use <code>camelCase</code> para variáveis e funções (ex: <code>nomeUsuario</code>).</li>
+                            <li><strong>Comentários:</strong> Comente o "porquê" da sua lógica, não o "o quê".</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="exercicios" class="content-section">
+                <h2>Exercícios de Fixação</h2>
+                <h3>Desafio: Mostrar Hora Atual</h3>
+                <p>Clique no botão abaixo para executar o código do desafio e exibir a data e hora atuais.</p>
+                <button id="mostrar-hora-btn" class="challenge-button">
+                    <i class="fas fa-clock"></i> Mostrar Hora Atual
+                </button>
+                <p id="hora-atual-display" class="mensagem"></p>
+            </section>
+            
+            <section id="recursos" class="content-section">
+                <h2>Recursos Complementares</h2>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank">MDN Web Docs – Guia de JavaScript</a> (Essencial)</li>
+                    <li><a href="https://www.w3schools.com/js/js_htmldom.asp" target="_blank">W3Schools – JavaScript DOM</a> (Ótimo para exemplos)</li>
+                    <li><a href="https://www.youtube.com/playlist?list=PLHz_AreHm4dlsK3Nr9GVvXCbpQyHQl1o1" target="_blank">Curso em Vídeo – JavaScript para Iniciantes</a> (Em português)</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Ifes Campus de Alegre | Desenvolvido por Prof. Cleziel Franzoni da Costa</p>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
